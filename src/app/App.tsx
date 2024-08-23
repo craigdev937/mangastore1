@@ -1,14 +1,11 @@
 import React from "react";
 import "./App.css";
-import Army from "/Army.jpg";
+import { Main } from "../routes/Main";
 
 export const App = () => {
     return (
         <React.Fragment>
-            <img 
-                src={Army} alt="Army" 
-                height={"500px"} width={"auto"}
-            />
+            <Main />
         </React.Fragment>
     );
 };
