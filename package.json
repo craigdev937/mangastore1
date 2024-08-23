@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server ./data/mangas.json --port 5000"
   },
   "keywords": [],
   "author": "",
