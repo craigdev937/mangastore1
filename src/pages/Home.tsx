@@ -1,10 +1,18 @@
 import React from "react";
+import { MangaAPI } from "../global/MangaAPI";
 
 export const Home = () => {
+    const { error, isLoading, data } = MangaAPI.useManQuery();
+
     return (
         <React.Fragment>
-            <h1>Home</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste iusto nam quisquam recusandae enim labore debitis voluptatum dolorum, natus laboriosam molestias veniam magni vel officia perferendis aut assumenda quo illum?</p>
+            {data!.map((manga) => (
+                <aside key={manga.id}>
+                    <img src={manga.imgUrl} alt={manga.title} />
+                    <h3>{manga.title}</h3>
+                    <h2>{manga.price}</h2>
+                </aside>
+            ))}
         </React.Fragment>
     );
 };
