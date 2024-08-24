@@ -12,16 +12,20 @@ export const Home = () => {
             (a,b) => a.price - b.price) :
         sortData === "high" ? data && data.slice().sort(
             (a,b) => b.price - a.price) :
+        sortData === "a-z" ? data && data.slice().sort(
+            (a,b) => (a.title > b.title ? 1 : -1)) :
+        sortData === "z-a" ? data && data.slice().sort(
+            (a,b) => (b.title > a.title ? 1 : -1)) :
         sortData === "default" ? data : data
-
-    const handleChange =
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value)
-    };
 
     const handleSort =
     (event: React.ChangeEvent<HTMLInputElement>) => {
         setSortData(event.target.id)
+    };
+
+    const handleChange =
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value)
     };
 
     return (

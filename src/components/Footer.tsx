@@ -4,8 +4,12 @@ import "./Footer.css";
 export const Footer = () => {
     return (
         <React.Fragment>
-            <footer>
-                <h1>Footer</h1>
+            <footer className="border-top py-4 g-light">
+                <section className="container-lg">
+                    <p className="text-center text-muted">
+                        &copy; iCodeLand
+                    </p>
+                </section>
             </footer>
         </React.Fragment>
     );
