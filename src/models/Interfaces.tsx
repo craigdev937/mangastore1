@@ -6,4 +6,10 @@ export interface IMan {
     quantity: number
 };
 
+export interface ICartState {
+    cartItems: IMan[],
+    quantity: number,
+    total: number
+};
+
 

@@ -1,11 +1,15 @@
 import React from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { MangaAPI } from "../global/MangaAPI";
+import { useAD } from "../global/Hooks";
+import { CartActions } from "../global/CartSlice";
+import { IMan } from "../models/Interfaces";
 
 export const Home = () => {
     const { data } = MangaAPI.useManQuery();
     const [search, setSearch] = React.useState("");
     const [sortData, setSortData] = React.useState("");
+    const dispatch = useAD();
 
     const mangas = 
         sortData === "low" ? data && data.slice().sort(
@@ -132,6 +136,8 @@ export const Home = () => {
                                 btn-danger 
                                 text-decoration-none 
                                 ms-2 my-4"
+                                onClick={() => dispatch(
+                                    CartActions.addToCart(manga))}
                             >
                                 <FaCartPlus className="me-2 fs-5" />
                                 Add To Cart

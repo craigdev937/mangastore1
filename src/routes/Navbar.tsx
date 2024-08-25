@@ -2,8 +2,17 @@ import React from "react";
 import "./Navbar.css";
 import { Link, Outlet } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
+import { useAS, useAD } from "../global/Hooks";
+import { CartActions } from "../global/CartSlice";
 
 export const Navbar = () => {
+    const { quantity, cartItems } = useAS((state) => state.cart);
+    const dispatch = useAD();
+
+    React.useEffect(() => {
+        dispatch(CartActions.cartTotal());
+    }, [cartItems, dispatch]);
+
     return (
         <React.Fragment>
             <nav className="navbar 
@@ -29,7 +38,7 @@ export const Navbar = () => {
                             >
                                 <FaCartArrowDown 
                                     className="me-2 fs-4" 
-                                />0
+                                />({ quantity })
                         </Link>
                     </div>
                 </section>
