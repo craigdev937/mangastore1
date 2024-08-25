@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IMan, ICartState } from "../models/Interfaces";
 
 const initialState: ICartState = {
-    cartItems: [],
+    cartItems: JSON.parse(
+        localStorage.getItem("cart")!
+    ) || [],
     quantity: 0,
     total: 0
 };
@@ -21,7 +23,11 @@ const CartSlice = createSlice({
                 state.cartItems[itemIndex].quantity += 1;
             } else {
                 const manga = {...action.payload, quantity: 1}
-                state.cartItems.push(manga)
+                state.cartItems.push(manga);
+                localStorage.setItem(
+                    "cart", 
+                    JSON.stringify(state.cartItems)
+                );
             }
         },
         cartTotal: (state) => {

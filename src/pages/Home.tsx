@@ -3,7 +3,6 @@ import { FaCartPlus } from "react-icons/fa";
 import { MangaAPI } from "../global/MangaAPI";
 import { useAD } from "../global/Hooks";
 import { CartActions } from "../global/CartSlice";
-import { IMan } from "../models/Interfaces";
 
 export const Home = () => {
     const { data } = MangaAPI.useManQuery();

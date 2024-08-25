@@ -1,10 +1,25 @@
 import React from "react";
+import { useAS } from "../global/Hooks";
 
 export const Cart = () => {
+    const { cartItems, quantity, total } = 
+        useAS((state) => state.cart);
+
     return (
         <React.Fragment>
-            <h1>Cart</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste iusto nam quisquam recusandae enim labore debitis voluptatum dolorum, natus laboriosam molestias veniam magni vel officia perferendis aut assumenda quo illum?</p>
+            <section>
+                <div>
+                    {cartItems.map((manga) => (
+                        <aside key={manga.id}>
+                            <h3>{manga.title}</h3>
+                            <h1>{manga.price}</h1>
+                        </aside>
+                    ))}
+                </div>
+                <aside>
+                    <span>Total ({quantity}): ${total}</span>
+                </aside>
+            </section>
         </React.Fragment>
     );
 };
