@@ -98,7 +98,11 @@ export const Home = () => {
                     </li>
                     <li className="dropdown-item">
                         <div className="form-check">
-                            <label htmlFor="z-a" className="form-check-label">Z-A</label>
+                            <label 
+                                htmlFor="z-a" 
+                                className="form-check-label"
+                                >Z-A
+                            </label>
                             <input 
                                 className="form-check-input" 
                                 type="radio" 
