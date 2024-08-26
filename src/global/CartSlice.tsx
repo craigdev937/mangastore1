@@ -30,6 +30,43 @@ const CartSlice = createSlice({
                 );
             }
         },
+        removeFromCart: (
+            state, 
+            action: PayloadAction<number>
+        ) => {
+            state.cartItems = state.cartItems.filter(
+                (item) => item.id !== action.payload);
+            localStorage.setItem(
+                "cart", 
+                JSON.stringify(state.cartItems)
+            );
+        },
+        increase: (
+            state, 
+            action: PayloadAction<{ id: number }>
+        ) => {
+            const cartItem = state.cartItems.find(
+                (item) => item.id === action.payload.id);
+            if (cartItem) {
+                cartItem.quantity = cartItem.quantity + 1;
+            }
+        },
+        decrease: (
+            state, 
+            action: PayloadAction<{ id: number }>
+        ) => {
+            const cartItem = state.cartItems.find(
+                (item) => item.id === action.payload.id);
+            if (cartItem) {
+                cartItem.quantity = cartItem.quantity - 1;
+            }
+        },
+        clearCart: (state) => {
+            return {
+                ...state,
+                cartItems: []
+            }
+        },
         cartTotal: (state) => {
             let quantity = 0;
             let total = 0;
