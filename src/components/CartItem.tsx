@@ -5,10 +5,6 @@ import { CartActions } from "../global/CartSlice";
 import { IMan } from "../models/Interfaces";
 import { useAD } from "../global/Hooks";
 
-// type CAR = {
-//     manga: IMan
-// };
-
 export const CartItem = 
 ({id, title, price, quantity, imgUrl}: IMan) => {
     const dispatch = useAD();
